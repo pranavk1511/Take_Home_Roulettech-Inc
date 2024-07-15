@@ -66,4 +66,4 @@ jobs:
       - name: Run tests
         run: |
           cd django-todo-react/backend
-          pipenv run python manage.py test todo/tests.py
+          pipenv run python manage.py test 
