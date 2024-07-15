@@ -6,7 +6,8 @@ on:
       - main
   push:
     branches:
-      - develop 
+      - develop
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -44,10 +45,15 @@ jobs:
           pip install pipenv
           pipenv install --dev
 
+      - name: Change directory to backend
+        run: cd django-todo-react/backend
+
       - name: Run migrations
         run: |
+          cd django-todo-react/backend
           pipenv run python manage.py migrate
 
       - name: Run tests
         run: |
-          pipenv run python manage.py test
+          cd django-todo-react/backend
+          pipenv run python manage.py test todo/tests.py
