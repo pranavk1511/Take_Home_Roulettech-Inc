@@ -3,7 +3,7 @@ import Modal from "./components/Modal";
 import axios from "axios";
 
 // Define the base URL for the API
-const API_BASE_URL = "http://52.201.244.180:8000";
+const API_BASE_URL = "http://44.211.139.220:8000";
 
 class App extends Component {
   constructor(props) {
