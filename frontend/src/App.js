@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import Modal from "./components/Modal";
 import axios from "axios";
 
+// Define the base URL for the API
+const API_BASE_URL = "http://52.201.244.180:8000";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +26,7 @@ class App extends Component {
 
   refreshList = () => {
     axios
-      .get("/api/todos/")
+      .get(`${API_BASE_URL}/api/todos/`)
       .then((res) => this.setState({ todoList: res.data }))
       .catch((err) => console.log(err));
   };
@@ -37,18 +40,18 @@ class App extends Component {
 
     if (item.id) {
       axios
-        .put(`/api/todos/${item.id}/`, item)
+        .put(`${API_BASE_URL}/api/todos/${item.id}/`, item)
         .then((res) => this.refreshList());
       return;
     }
     axios
-      .post("/api/todos/", item)
+      .post(`${API_BASE_URL}/api/todos/`, item)
       .then((res) => this.refreshList());
   };
 
   handleDelete = (item) => {
     axios
-      .delete(`/api/todos/${item.id}/`)
+      .delete(`${API_BASE_URL}/api/todos/${item.id}/`)
       .then((res) => this.refreshList());
   };
 
